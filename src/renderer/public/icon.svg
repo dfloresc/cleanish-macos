@@ -1,0 +1,299 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1071" height="1077" viewBox="92 89 1071 1077">
+  <defs>
+    <!-- Canvas -->
+    <radialGradient id="canvasBg" cx="52%" cy="45%" r="82%">
+      <stop offset="0" stop-color="#252d36"/>
+      <stop offset="0.56" stop-color="#20272f"/>
+      <stop offset="1" stop-color="#171c22"/>
+    </radialGradient>
+    <filter id="canvasNoise" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="2" seed="14" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="1 0 0 0 0
+                                                        0 1 0 0 0
+                                                        0 0 1 0 0
+                                                        0 0 0 .025 0" result="noiseAlpha"/>
+      <feBlend in="SourceGraphic" in2="noiseAlpha" mode="soft-light"/>
+    </filter>
+    <!-- Main app tile -->
+    <linearGradient id="tileBase" x1="115" y1="105" x2="1135" y2="1135" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#48d7fa"/>
+      <stop offset="0.28" stop-color="#27aff8"/>
+      <stop offset="0.62" stop-color="#2d82f5"/>
+      <stop offset="0.82" stop-color="#395df4"/>
+      <stop offset="1" stop-color="#625ef8"/>
+    </linearGradient>
+    <radialGradient id="tileTopSheen">
+      <stop offset="0" stop-color="#d8fbff" stop-opacity=".20"/>
+      <stop offset=".48" stop-color="#96eefc" stop-opacity=".10"/>
+      <stop offset="1" stop-color="#57daf8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="tileLocalSpecular">
+      <stop offset="0" stop-color="#e8fdff" stop-opacity=".42"/>
+      <stop offset=".45" stop-color="#b9f6ff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#75e3fb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="tileCyanWash">
+      <stop offset="0" stop-color="#6fe5fb" stop-opacity=".18"/>
+      <stop offset=".58" stop-color="#52dafa" stop-opacity=".09"/>
+      <stop offset="1" stop-color="#3ecdf8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tileLeftGlow" x1="92" y1="0" x2="235" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c6f8ff" stop-opacity=".17"/>
+      <stop offset=".28" stop-color="#87eafa" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#58d7f8" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="clusterWarmHalo">
+      <stop offset="0" stop-color="#fff4a8" stop-opacity=".30"/>
+      <stop offset=".42" stop-color="#ffe86b" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ffe86b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="tileDeepBlue" cx="690" cy="715" r="650" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1779f1" stop-opacity=".18"/>
+      <stop offset="0.68" stop-color="#1b6af1" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#1b6af1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="tilePurpleBR" cx="1115" cy="1105" r="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7d63ff" stop-opacity=".42"/>
+      <stop offset="0.5" stop-color="#675dfb" stop-opacity=".20"/>
+      <stop offset="1" stop-color="#675dfb" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tileEdge" x1="120" y1="95" x2="1140" y2="1160" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#83e9fb" stop-opacity=".9"/>
+      <stop offset=".24" stop-color="#37c9f9" stop-opacity=".52"/>
+      <stop offset=".66" stop-color="#2f72f7" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#4638ec" stop-opacity=".75"/>
+    </linearGradient>
+    <linearGradient id="tileInnerEdge" x1="120" y1="120" x2="1130" y2="1145" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ecffff" stop-opacity=".27"/>
+      <stop offset=".36" stop-color="#a5f1ff" stop-opacity=".10"/>
+      <stop offset=".75" stop-color="#3248df" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#1e28b8" stop-opacity=".35"/>
+    </linearGradient>
+    <filter id="tileShadow" x="-20%" y="-20%" width="140%" height="150%" filterUnits="objectBoundingBox">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#05090d" flood-opacity=".82"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#070d13" flood-opacity=".56"/>
+    </filter>
+    <filter id="tileSoftTexture" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="23" result="tileNoise"/>
+      <feColorMatrix in="tileNoise" type="matrix" values="1 0 0 0 0
+                                                               0 1 0 0 0
+                                                               0 0 1 0 0
+                                                               0 0 0 .035 0" result="tileNoiseAlpha"/>
+      <feBlend in="SourceGraphic" in2="tileNoiseAlpha" mode="soft-light"/>
+    </filter>
+    <clipPath id="tileClip">
+      <rect x="92" y="89" width="1071" height="1077" rx="248"/>
+    </clipPath>
+    <filter id="innerTileShade" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+    <!-- Monitor -->
+    <linearGradient id="monitorWhite" x1="330" y1="402" x2="935" y2="913" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fbfcfe"/>
+      <stop offset=".36" stop-color="#f7f8fc"/>
+      <stop offset=".68" stop-color="#f3f5fa"/>
+      <stop offset="1" stop-color="#ebedf6"/>
+    </linearGradient>
+    <radialGradient id="monitorUpperLight" cx="372" cy="433" r="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".28"/>
+      <stop offset=".67" stop-color="#ffffff" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="monitorWarmGlow" cx="878" cy="468" r="126" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffbd2" stop-opacity=".98"/>
+      <stop offset=".35" stop-color="#fff3a0" stop-opacity=".50"/>
+      <stop offset=".72" stop-color="#fff3a0" stop-opacity=".10"/>
+      <stop offset="1" stop-color="#fff3a0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="monitorShadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur1"/>
+      <feOffset in="blur1" dx="0" dy="5" result="offset1"/>
+      <feFlood flood-color="#173e97" flood-opacity=".38" result="color1"/>
+      <feComposite in="color1" in2="offset1" operator="in" result="shadow1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="blur2"/>
+      <feOffset in="blur2" dx="0" dy="1" result="offset2"/>
+      <feFlood flood-color="#ffffff" flood-opacity=".55" result="color2"/>
+      <feComposite in="color2" in2="offset2" operator="in" result="shadow2"/>
+      <feMerge>
+        <feMergeNode in="shadow1"/>
+        <feMergeNode in="shadow2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="monitorInnerShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <mask id="monitorRingMask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="1254" height="1254">
+      <rect width="1254" height="1254" fill="black"/>
+      <rect x="300" y="415" width="643" height="493" rx="105" fill="white"/>
+      <rect x="358" y="472" width="525" height="377" rx="58" fill="black"/>
+    </mask>
+    <!-- Stand -->
+    <linearGradient id="standWhite" x1="263" y1="0" x2="979" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8f9fb"/>
+      <stop offset=".46" stop-color="#f1f3f9"/>
+      <stop offset="1" stop-color="#e9ebf5"/>
+    </linearGradient>
+    <linearGradient id="standVertical" x1="0" y1="941" x2="0" y2="998" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#dfe4f0" stop-opacity=".12"/>
+      <stop offset=".48" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".28"/>
+    </linearGradient>
+    <filter id="standShadow" x="-12%" y="-55%" width="124%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4.2" result="blur1"/>
+      <feOffset in="blur1" dx="0" dy="7" result="offset1"/>
+      <feFlood flood-color="#173f9c" flood-opacity=".52" result="color1"/>
+      <feComposite in="color1" in2="offset1" operator="in" result="shadow1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" result="blur2"/>
+      <feOffset in="blur2" dx="0" dy="1" result="offset2"/>
+      <feFlood flood-color="#ffffff" flood-opacity=".58" result="color2"/>
+      <feComposite in="color2" in2="offset2" operator="in" result="shadow2"/>
+      <feMerge>
+        <feMergeNode in="shadow1"/>
+        <feMergeNode in="shadow2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Sparkles -->
+    <radialGradient id="sparkleFill" cx="55%" cy="48%" r="73%">
+      <stop offset="0" stop-color="#ffde2b"/>
+      <stop offset=".52" stop-color="#ffe335"/>
+      <stop offset=".82" stop-color="#ffe95c"/>
+      <stop offset="1" stop-color="#fff28a"/>
+    </radialGradient>
+    <radialGradient id="sparkleFillSmall" cx="52%" cy="48%" r="74%">
+      <stop offset="0" stop-color="#ffde2b"/>
+      <stop offset=".18" stop-color="#ffe33a"/>
+      <stop offset=".44" stop-color="#ffeb67"/>
+      <stop offset=".72" stop-color="#fff090"/>
+      <stop offset="1" stop-color="#fff6ad"/>
+    </radialGradient>
+    <linearGradient id="sparkleLeftWash" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff7ad" stop-opacity=".56"/>
+      <stop offset=".34" stop-color="#fff185" stop-opacity=".25"/>
+      <stop offset=".68" stop-color="#ffe341" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sparkleCore" x1="0" y1="0" x2="1" y2=".78">
+      <stop offset="0" stop-color="#fffbd1" stop-opacity=".24"/>
+      <stop offset=".25" stop-color="#fff58d" stop-opacity=".12"/>
+      <stop offset=".58" stop-color="#fff056" stop-opacity=".03"/>
+      <stop offset="1" stop-color="#ffd31b" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="sparkleGlowLarge" x="-55%" y="-55%" width="220%" height="235%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18" result="blur"/>
+      <feFlood flood-color="#fff47d" flood-opacity=".80" result="glowColor"/>
+      <feComposite in="glowColor" in2="blur" operator="in" result="glow"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6.5" result="shadowBlur"/>
+      <feOffset in="shadowBlur" dx="8" dy="10" result="shadowOffset"/>
+      <feFlood flood-color="#17465f" flood-opacity=".68" result="shadowColor"/>
+      <feComposite in="shadowColor" in2="shadowOffset" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="sparkleGlowSmall" x="-55%" y="-55%" width="220%" height="235%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="11" result="blur"/>
+      <feFlood flood-color="#fff37a" flood-opacity=".72" result="glowColor"/>
+      <feComposite in="glowColor" in2="blur" operator="in" result="glow"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4.5" result="shadowBlur"/>
+      <feOffset in="shadowBlur" dx="5" dy="7" result="shadowOffset"/>
+      <feFlood flood-color="#1b4562" flood-opacity=".52" result="shadowColor"/>
+      <feComposite in="shadowColor" in2="shadowOffset" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Dark presentation background -->
+  <!-- App tile -->
+  <g filter="url(#tileShadow)">
+    <rect x="92" y="89" width="1071" height="1077" rx="248" fill="url(#tileBase)" stroke="#111b2b" stroke-width="2"/>
+  </g>
+  <g clip-path="url(#tileClip)" filter="url(#tileSoftTexture)">
+    <rect x="92" y="89" width="1071" height="1077" rx="248" fill="url(#tileBase)"/>
+    <ellipse cx="395" cy="92" rx="730" ry="255" fill="url(#tileTopSheen)"/>
+    <ellipse cx="172" cy="178" rx="250" ry="225" fill="url(#tileLocalSpecular)"/>
+    <ellipse cx="310" cy="205" rx="690" ry="325" fill="url(#tileCyanWash)"/>
+    <rect x="92" y="89" width="210" height="1077" fill="url(#tileLeftGlow)"/>
+    <rect x="92" y="89" width="1071" height="1077" rx="248" fill="url(#tileDeepBlue)"/>
+    <rect x="92" y="89" width="1071" height="1077" rx="248" fill="url(#tilePurpleBR)"/>
+    <!-- darkening on lower/right interior -->
+    <ellipse cx="1030" cy="1040" rx="430" ry="420" fill="#3a32dc" opacity=".10" filter="url(#innerTileShade)"/>
+  </g>
+  <rect x="97" y="94" width="1061" height="1067" rx="243" fill="none" stroke="url(#tileEdge)" stroke-width="9" opacity=".55"/>
+  <rect x="108" y="105" width="1039" height="1045" rx="232" fill="none" stroke="url(#tileInnerEdge)" stroke-width="11" opacity=".42"/>
+  <!-- PC and sparkles centered using the PC bounds only -->
+  <g id="centered-pc-cluster" transform="translate(6.5 -79)">
+  <!-- Enlarged foreground: PC remains centered; sparkles move with it -->
+  <g transform="translate(627.5 627.5) scale(1.14) translate(-627.5 -627.5)">
+    <!-- Warm reflected glow from the sparkle cluster -->
+    <ellipse cx="915" cy="408" rx="220" ry="185" fill="url(#clusterWarmHalo)" clip-path="url(#tileClip)"/>
+    <!-- Monitor ring and subtle inner edge shade -->
+    <g filter="url(#monitorShadow)">
+      <rect x="300" y="415" width="643" height="493" rx="105" fill="url(#monitorWhite)" mask="url(#monitorRingMask)"/>
+      <rect x="300" y="415" width="643" height="493" rx="105" fill="url(#monitorUpperLight)" mask="url(#monitorRingMask)"/>
+      <rect x="300" y="415" width="643" height="493" rx="105" fill="url(#monitorWarmGlow)" mask="url(#monitorRingMask)"/>
+    </g>
+    <!-- inner screen shadow/gloss -->
+    <rect x="361" y="475" width="519" height="371" rx="55" fill="none" stroke="#224aa7" stroke-width="6" opacity=".05" filter="url(#monitorInnerShadow)"/>
+    <rect x="359.5" y="473.5" width="522" height="374" rx="56.5" fill="none" stroke="#ffffff" stroke-width="1.5" opacity=".38"/>
+    <!-- Stand -->
+    <g filter="url(#standShadow)">
+      <rect x="263" y="941" width="716" height="57" rx="28.5" fill="url(#standWhite)"/>
+      <rect x="263" y="941" width="716" height="57" rx="28.5" fill="url(#standVertical)"/>
+    </g>
+    <rect x="265" y="943" width="712" height="53" rx="26.5" fill="none" stroke="#ffffff" stroke-width="2" opacity=".58"/>
+    <!-- Sparkles: large -->
+    <g filter="url(#sparkleGlowLarge)">
+      <path d="M934 272
+               C940 322 958 354 1028 371
+               C958 386 941 420 934 470
+               C926 421 907 388 836 371
+               C907 354 927 322 934 272 Z" fill="url(#sparkleFill)" stroke="#fff27a" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M934 272
+               C940 322 958 354 1028 371
+               C958 386 941 420 934 470
+               C926 421 907 388 836 371
+               C907 354 927 322 934 272 Z" fill="url(#sparkleCore)"/>
+      <path d="M934 272
+               C940 322 958 354 1028 371
+               C958 386 941 420 934 470
+               C926 421 907 388 836 371
+               C907 354 927 322 934 272 Z" fill="url(#sparkleLeftWash)"/>
+      <path d="M931 284 C926 326 906 353 848 369" fill="none" stroke="#ffffff" stroke-width="4.2" stroke-linecap="round" opacity=".88"/>
+    </g>
+    <!-- Sparkles: medium -->
+    <g filter="url(#sparkleGlowSmall)">
+      <path d="M810 384
+               C815 424 829 449 888 461
+               C832 475 816 499 810 539
+               C804 499 788 475 742 461
+               C789 449 804 424 810 384 Z" fill="url(#sparkleFillSmall)" stroke="#fff27a" stroke-width="1.5"/>
+      <path d="M810 384
+               C815 424 829 449 888 461
+               C832 475 816 499 810 539
+               C804 499 788 475 742 461
+               C789 449 804 424 810 384 Z" fill="url(#sparkleCore)"/>
+      <path d="M807 393 C802 426 786 449 750 460" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity=".9"/>
+    </g>
+    <!-- Sparkles: small -->
+    <g filter="url(#sparkleGlowSmall)">
+      <path d="M978 450
+               C983 484 995 504 1043 515
+               C998 527 983 547 978 579
+               C972 547 958 527 920 515
+               C959 505 973 484 978 450 Z" fill="url(#sparkleFillSmall)" stroke="#fff27a" stroke-width="1.4"/>
+      <path d="M978 450
+               C983 484 995 504 1043 515
+               C998 527 983 547 978 579
+               C972 547 958 527 920 515
+               C959 505 973 484 978 450 Z" fill="url(#sparkleCore)"/>
+      <path d="M975 459 C970 486 958 504 927 514" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" opacity=".88"/>
+    </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-surface: #08080d;
+  --color-panel: #101018;
+  --color-panel-2: #16161f;
+  --color-panel-3: #1d1d29;
+  --color-line: #23232f;
+  --color-accent: #38bdf8;
+  --color-accent-2: #818cf8;
+  --color-danger: #f87171;
+  --color-ok: #34d399;
+  --color-warn: #fbbf24;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-surface);
+  color: #e7e7ef;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c2c3a;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drag {
+  -webkit-app-region: drag;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .btn:focus-visible,
+  .input:focus-visible,
+  [role='switch']:focus-visible,
+  [role='button']:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #0ea5e9, #6366f1);
+    color: white;
+    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
+  }
+  .btn-primary:hover:not(:disabled) {
+    filter: brightness(1.12);
+  }
+  .btn-ghost {
+    background: var(--color-panel-2);
+    border-color: var(--color-line);
+    color: #c9c9d6;
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background: var(--color-panel-3);
+  }
+  .btn-danger {
+    background: rgba(248, 113, 113, 0.12);
+    border-color: rgba(248, 113, 113, 0.35);
+    color: var(--color-danger);
+  }
+  .btn-danger:hover:not(:disabled) {
+    background: rgba(248, 113, 113, 0.2);
+  }
+
+  .input {
+    background: var(--color-panel-2);
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #e7e7ef;
+    outline: none;
+  }
+  .input:focus {
+    border-color: var(--color-accent);
+  }
+
+  .checkbox {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    border: 1.5px solid #3a3a4a;
+    background: var(--color-panel-2);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.12s ease;
+  }
+  .checkbox:disabled { opacity: 0.4; cursor: not-allowed; }
+  .checkbox:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  .checkbox:checked {
+    background: linear-gradient(135deg, #0ea5e9, #6366f1);
+    border-color: transparent;
+  }
+  .checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 4.5px;
+    top: 1.5px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .card {
+    background: var(--color-panel);
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.25s ease both;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes pulseBar {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.progress-indeterminate {
+  background: linear-gradient(90deg, #16161f 25%, #2a3a52 50%, #16161f 75%);
+  background-size: 200% 100%;
+  animation: pulseBar 1.4s ease infinite;
+}
