@@ -1,5 +1,7 @@
 # Cleanish
 
+[![CI](https://github.com/dfloresc/cleanish-macos/actions/workflows/ci.yml/badge.svg)](https://github.com/dfloresc/cleanish-macos/actions/workflows/ci.yml)
+
 Cleanish is a free, open-source disk cleaner and space inspector for macOS. It shows what is using space on your Mac and helps you remove caches, logs, leftovers of uninstalled apps and large files, always with a preview first and sending items to the Trash by default.
 
 Built with Electron, React, TypeScript and Tailwind CSS. Available in English and Spanish.
@@ -20,6 +22,12 @@ Built with Electron, React, TypeScript and Tailwind CSS. Available in English an
 - Items are moved to the Trash. Permanent deletion is disabled by default. When enabled in Settings, it still has to be chosen and confirmed for each operation, and it is required to remove items that are already in the Trash.
 - macOS components, credentials (`~/.ssh`, keychains…), top-level folders such as `~/Documents` or `~/Library`, and the contents of app bundles are protected. Symbolic links are never followed.
 - Items that change between the preview and the cleanup are skipped.
+
+## Download
+
+Download the latest version from [Releases](https://github.com/dfloresc/cleanish-macos/releases/latest): the `arm64` DMG for Apple Silicon or the `x64` DMG for Intel Macs. Open it and drag **Cleanish** to **Applications**.
+
+Cleanish is ad-hoc signed, but it is not signed with an Apple Developer ID or notarized. macOS blocks the first launch; allow it in **System Settings → Privacy &amp; Security → Open Anyway**.
 
 ## Requirements
 
@@ -56,7 +64,7 @@ This type-checks the project, compiles it and packages it with electron-builder 
 
 Open the DMG and drag **Cleanish** to **Applications**. To build for another architecture, pass the electron-builder flag, for example `npm run dist -- --x64` or `npm run dist -- --universal`.
 
-The app is not code-signed or notarized. A build made on your own Mac opens normally. If you copy it to another Mac, macOS blocks the first launch; allow it in **System Settings → Privacy &amp; Security → Open Anyway**.
+Builds are ad-hoc signed, not signed with an Apple Developer ID or notarized. A build made on your own Mac opens normally; on another Mac, macOS blocks the first launch until you allow it in **System Settings → Privacy &amp; Security → Open Anyway**.
 
 ## Permissions
 

@@ -12,6 +12,10 @@ files:
   - "!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}"
 mac:
   entitlementsInherit: build/entitlements.mac.plist
+  # Ad-hoc signature: there is no Developer ID, but the bundle stays sealed so downloads are not reported as damaged.
+  identity: "-"
+  # Hardened runtime with an ad-hoc signature rejects the pre-signed Electron frameworks.
+  hardenedRuntime: false
   category: public.app-category.utilities
   target:
     - dmg
